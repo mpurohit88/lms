@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputGroup, FormControl } from '../BootstrapWrap';
 
-const Input = ({ text }) => {
+const Input = ({ text, autoFocus }) => {
   return (
     <div>
       <InputGroup className="mb-3">
@@ -12,6 +12,7 @@ const Input = ({ text }) => {
           placeholder={text}
           aria-label={text}
           aria-describedby="basic-addon1"
+          autoFocus={autoFocus}
         />
       </InputGroup>
     </div>
