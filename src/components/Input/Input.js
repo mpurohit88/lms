@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputGroup, FormControl } from './BootstrapWrap';
+import { InputGroup, FormControl } from '../BootstrapWrap';
 
 const Input = ({ text }) => {
   return (

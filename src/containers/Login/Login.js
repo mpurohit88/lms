@@ -1,12 +1,16 @@
 import React from 'react';
-import Input from '../../components/Input/Input';
+import { Input, H1, PrimaryButton, SecondayButton } from '../../components';
 
+import './Login.css';
 
 const Login = () => {
   return (
-    <div>
+    <div className="login">
+      <H1 text="Please Login" />
       <Input text="User Name" />
       <Input text="Password" />
+      <PrimaryButton text="Login" />
+      <SecondayButton text="Reset" />
     </div>
   )
 }
