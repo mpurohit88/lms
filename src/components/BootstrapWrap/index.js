@@ -1,5 +1,5 @@
 
-import { InputGroup, Form, FormControl, Button, Nav, Navbar } from 'react-bootstrap';
+import { InputGroup, Form, FormControl, Button, Nav, Navbar, Modal } from 'react-bootstrap';
 
 export {
   InputGroup,
@@ -7,5 +7,6 @@ export {
   Button,
   Nav,
   Navbar,
-  Form
+  Form,
+  Modal
 }

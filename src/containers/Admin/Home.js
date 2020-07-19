@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import NavbarWrap from '../../components/Navbar/Navbar'
 import Dashboard from './Dashboard'
 import Student from './Student'
-import Course from './Course'
+import Course from './Course/Course'
 
 const Home = ({ setIsAuthenticated }) => {
   const [currentPage, setCurrentPage] = useState(1);

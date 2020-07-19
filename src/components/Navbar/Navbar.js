@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Navbar, Nav, Form, FormControl, Button } from '../BootstrapWrap';
+import { Navbar, Nav, Form, FormControl } from '../BootstrapWrap';
 import OutlineButton from '../Button/OutlineButton';
 
 const NavbarWrap = ({ setIsAuthenticated, setCurrentPage }) => {
