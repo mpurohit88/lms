@@ -6,6 +6,7 @@ import Create from './Create';
 
 const Course = () => {
   const [lgShow, setLgShow] = useState(false);
+  const [course, setCourse] = useState({})
 
   return (
     <div>
@@ -14,7 +15,7 @@ const Course = () => {
       <PrimaryButton text="Create New Course" onClick={() => setLgShow(!lgShow)} />
       <List />
       <ModalWrap title="Create New Course" lgShow={lgShow} setLgShow={setLgShow}>
-        <Create />
+        <Create setCourse={setCourse} />
       </ModalWrap>
     </div>
   )
