@@ -2,6 +2,9 @@ import React from 'react';
 
 import { Modal } from '../BootstrapWrap'
 
+import PrimaryButton from '../Button/PrimaryButton'
+import SecondayButton from '../Button/SecondayButton'
+
 const ModalWrap = ({ title, lgShow, setLgShow, children }) => {
   return <Modal
     size="lg"
@@ -15,6 +18,10 @@ const ModalWrap = ({ title, lgShow, setLgShow, children }) => {
       </Modal.Title>
     </Modal.Header>
     <Modal.Body>{children}</Modal.Body>
+    <Modal.Footer>
+      <PrimaryButton text="Submit" />
+      <SecondayButton text="Close" />
+    </Modal.Footer>
   </Modal>
 }
 
