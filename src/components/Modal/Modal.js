@@ -5,7 +5,11 @@ import { Modal } from '../BootstrapWrap'
 import PrimaryButton from '../Button/PrimaryButton'
 import SecondayButton from '../Button/SecondayButton'
 
-const ModalWrap = ({ title, lgShow, setLgShow, children }) => {
+const ModalWrap = ({ title, lgShow, setLgShow, children, sumbitCourse }) => {
+  const userClick = () => {
+    sumbitCourse();
+  }
+
   return <Modal
     size="lg"
     show={lgShow}
@@ -19,7 +23,7 @@ const ModalWrap = ({ title, lgShow, setLgShow, children }) => {
     </Modal.Header>
     <Modal.Body>{children}</Modal.Body>
     <Modal.Footer>
-      <PrimaryButton text="Submit" />
+      <PrimaryButton text="Submit" onClick={userClick} />
       <SecondayButton text="Close" />
     </Modal.Footer>
   </Modal>
