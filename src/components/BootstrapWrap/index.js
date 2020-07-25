@@ -2,7 +2,7 @@
 import {
   InputGroup, Form, FormControl,
   Button, Nav, Navbar, Modal,
-  DropdownButton, Dropdown
+  DropdownButton, Dropdown, Table
 } from 'react-bootstrap';
 
 export {
@@ -14,5 +14,6 @@ export {
   Form,
   Modal,
   DropdownButton,
-  Dropdown
+  Dropdown,
+  Table
 }

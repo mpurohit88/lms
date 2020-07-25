@@ -5,6 +5,7 @@ import PrimaryButton from './Button/PrimaryButton';
 import SecondayButton from './Button/SecondayButton';
 import ModalWrap from './Modal/Modal';
 import DropdownWrap from './Dropdown/Dropdown';
+import TableWrap from './Table/Table';
 
 export {
   Input,
@@ -13,5 +14,6 @@ export {
   PrimaryButton,
   SecondayButton,
   ModalWrap,
-  DropdownWrap
+  DropdownWrap,
+  TableWrap
 }

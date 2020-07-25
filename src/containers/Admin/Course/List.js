@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const List = () => {
-  return <div>List of Courses</div>
+import { TableWrap } from '../../../components';
+
+const List = ({ listOfCourses }) => {
+  const tableHeader = ['Id', 'Name', 'Category', 'Sub Category', 'Fees', 'Actions']
+
+  return <div>
+    <TableWrap tableHeads={tableHeader} tableRows={listOfCourses} />
+  </div>
 }
 
 export default List;
