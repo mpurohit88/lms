@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Table } from '../BootstrapWrap'
+import { Table } from '../BootstrapWrap';
+import PrimaryButton from '../Button/PrimaryButton';
 
-const TableWrap = ({ tableHeads, tableRows }) => {
+const TableWrap = ({ tableHeads, tableRows, onClick }) => {
+
   return <Table striped bordered hover>
     <thead>
       <tr>
@@ -22,7 +24,7 @@ const TableWrap = ({ tableHeads, tableRows }) => {
             <td>{tableRow.category}</td>
             <td>{tableRow.subCategory}</td>
             <td>{tableRow.fees}</td>
-            <td>Edit</td>
+            <td><PrimaryButton id={tableRow.id} text="Edit" onClick={() => onClick(tableRow)} /></td>
           </tr>
         })
       }

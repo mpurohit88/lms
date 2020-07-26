@@ -7,7 +7,21 @@ import Create from './Create';
 const Course = () => {
   const [lgShow, setLgShow] = useState(false);
   const [newCourse, setNewCourse] = useState({});
-  const [listOfCourses, setListOfCourses] = useState([]);
+  const [listOfCourses, setListOfCourses] = useState([{
+    id: 1,
+    courseName: "Course Name",
+    category: 1,
+    subCategory: 2,
+    fees: 1000
+  },
+  {
+    id: 2,
+    courseName: "Second Name",
+    category: 2,
+    subCategory: 1,
+    fees: 1200
+  }
+  ]);
 
 
   useEffect(() => {
@@ -19,7 +33,11 @@ const Course = () => {
     newCourseArray.push(newCourse);
 
     setListOfCourses(newCourseArray);
-    console.log(newCourse);
+  }
+
+  const editCourse = (course) => {
+    setLgShow(true);
+    setNewCourse(course);
   }
 
   return (
@@ -28,9 +46,9 @@ const Course = () => {
 
       <PrimaryButton text="Create New Course" onClick={() => setLgShow(!lgShow)} />
       <br />
-      <List listOfCourses={listOfCourses} />
+      <List listOfCourses={listOfCourses} onClick={(course) => editCourse(course)} />
       <ModalWrap title="Create New Course" sumbitCourse={sumbitCourse} lgShow={lgShow} setLgShow={setLgShow}>
-        <Create setNewCourse={setNewCourse} />
+        <Create newCourse={newCourse} setNewCourse={setNewCourse} />
       </ModalWrap>
     </div>
   )

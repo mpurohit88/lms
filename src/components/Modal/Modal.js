@@ -24,7 +24,7 @@ const ModalWrap = ({ title, lgShow, setLgShow, children, sumbitCourse }) => {
     <Modal.Body>{children}</Modal.Body>
     <Modal.Footer>
       <PrimaryButton text="Submit" onClick={userClick} />
-      <SecondayButton text="Close" />
+      <SecondayButton text="Close" onClick={() => setLgShow(false)} />
     </Modal.Footer>
   </Modal>
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputGroup, FormControl } from '../BootstrapWrap';
 
-const Input = ({ text, autoFocus, name, onChange }) => {
+const Input = ({ text, autoFocus, name, onChange, value }) => {
   return (
     <div>
       <InputGroup className="mb-3">
@@ -15,6 +15,7 @@ const Input = ({ text, autoFocus, name, onChange }) => {
           autoFocus={autoFocus}
           name={name}
           onChange={onChange}
+          value={value}
         />
       </InputGroup>
     </div>
