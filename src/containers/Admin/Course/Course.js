@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { PrimaryButton, ModalWrap, Input } from '../../../components';
+import { saveCourse } from '../../../store/actions/course';
 
 import List from './List'
 import Create from './Create';
@@ -13,6 +14,8 @@ const Course = () => {
   const [listOfCourses, setListOfCourses] = useState([]);
   const [originalListOfCourses, setOriginalListOfCourses] = useState([]);
 
+  const dispatch = useDispatch();
+
   const courseRedux = useSelector(state => state.courseState.course);
 
   useEffect(() => {
@@ -20,15 +23,12 @@ const Course = () => {
     setOriginalListOfCourses(courseRedux);
   }, [courseRedux])
 
-  useEffect(() => {
-    console.log("newCourse...", newCourse);
-  }, [newCourse])
+  // useEffect(() => {
+  //   console.log("newCourse...", newCourse);
+  // }, [newCourse])
 
   const sumbitCourse = () => {
-    const newCourseArray = [...listOfCourses];
-    newCourseArray.push(newCourse);
-
-    setListOfCourses(newCourseArray);
+    dispatch(saveCourse(newCourse));
   }
 
   const editSubmitCourse = () => {

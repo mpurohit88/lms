@@ -10,7 +10,7 @@ const NavbarWrap = ({ setIsAuthenticated }) => {
   return <>
     <Navbar bg="primary" variant="dark">
       <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-      <Nav className="mr-auto">
+      <Nav className="mr-auto" id="Navbar">
         {/* <Nav.Link href="#home" onClick={() => setCurrentPage(1)}>Home</Nav.Link>
         <Nav.Link href="#course" onClick={() => setCurrentPage(2)}>Courses</Nav.Link>
         <Nav.Link href="#student" onClick={() => setCurrentPage(3)}>Students</Nav.Link> */}

@@ -19,14 +19,15 @@ const initialState = {
 };
 
 function course(state = initialState, action) {
-  console.log("course...", state);
-
-  switch (actionType) {
+  switch (action.type) {
     case actionType.SAVE_COURSE:
+      const newCourseArray = [...state.course];
+      newCourseArray.push(action.value);
+
+      return { course: newCourseArray };
+    default:
       return state;
   }
-
-  return state;
 }
 
 export default course;

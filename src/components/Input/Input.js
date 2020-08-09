@@ -15,7 +15,7 @@ const Input = ({ text, autoFocus, name, onChange, value }) => {
           autoFocus={autoFocus}
           name={name}
           onChange={onChange}
-          value={value}
+          value={value || ''}
         />
       </InputGroup>
     </div>
