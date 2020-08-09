@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import { PrimaryButton, ModalWrap, Input } from '../../../components';
 
@@ -9,36 +10,15 @@ const Course = () => {
   const [isCreate, setIsCreate] = useState(true);
   const [lgShow, setLgShow] = useState(false);
   const [newCourse, setNewCourse] = useState({});
-  const [listOfCourses, setListOfCourses] = useState([{
-    id: 1,
-    courseName: "Course Name",
-    category: 1,
-    subCategory: 2,
-    fees: 1000
-  },
-  {
-    id: 2,
-    courseName: "Second Name",
-    category: 2,
-    subCategory: 1,
-    fees: 1200
-  }
-  ]);
-  const [originalListOfCourses, setOriginalListOfCourses] = useState([{
-    id: 1,
-    courseName: "Course Name",
-    category: 1,
-    subCategory: 2,
-    fees: 1000
-  },
-  {
-    id: 2,
-    courseName: "Second Name",
-    category: 2,
-    subCategory: 1,
-    fees: 1200
-  }
-  ]);
+  const [listOfCourses, setListOfCourses] = useState([]);
+  const [originalListOfCourses, setOriginalListOfCourses] = useState([]);
+
+  const courseRedux = useSelector(state => state.courseState.course);
+
+  useEffect(() => {
+    setListOfCourses(courseRedux);
+    setOriginalListOfCourses(courseRedux);
+  }, [courseRedux])
 
   useEffect(() => {
     console.log("newCourse...", newCourse);
