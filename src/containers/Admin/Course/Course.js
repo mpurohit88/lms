@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
 import { PrimaryButton, ModalWrap, Input } from '../../../components';
 import { saveCourse } from '../../../store/actions/course';
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 
 import List from './List'
 import Create from './Create';
@@ -28,6 +30,7 @@ const Course = () => {
   // }, [newCourse])
 
   const sumbitCourse = () => {
+    axios.post('https://react-hook-lms.firebaseio.com/course.json', { course: newCourse });
     dispatch(saveCourse(newCourse));
   }
 
@@ -69,4 +72,4 @@ const Course = () => {
   )
 }
 
-export default Course;
+export default withErrorHandler(Course, axios);
