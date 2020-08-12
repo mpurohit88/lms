@@ -17,11 +17,12 @@ const withErrorHandler = (WrappedComponent, axios) => {
       const resInterc = axios.interceptors.response.use(res => res, (error) => {
         setError(error)
         console.log("....Error...", error);
+        throw error;
       });
 
       return () => {
-        axios.interceptors.eject.use(reqInterc);
-        axios.interceptors.eject.use(resInterc);
+        axios.interceptors.eject(reqInterc);
+        axios.interceptors.eject(resInterc);
       }
     }, []);
 

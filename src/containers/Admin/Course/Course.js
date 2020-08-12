@@ -30,7 +30,6 @@ const Course = () => {
   // }, [newCourse])
 
   const sumbitCourse = () => {
-    axios.post('https://react-hook-lms.firebaseio.com/course.json', { course: newCourse });
     dispatch(saveCourse(newCourse));
   }
 
