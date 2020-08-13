@@ -1,5 +1,6 @@
-import * as actionTypes from './types';
 import axios from 'axios';
+
+import * as actionTypes from './types';
 
 export const auth = (credentials, isSignUp) => {
   console.log("'credentials...", credentials)
@@ -38,4 +39,15 @@ export const authSuccess = (authData) => {
 
 export const authFailure = (error) => {
   return { type: actionTypes.AUTH_SAVE_FAILURE, value: error }
+}
+
+export const logout = () => {
+  return dispatch => {
+    localStorage.clear();
+    dispatch(authLogout());
+  }
+}
+
+export const authLogout = () => {
+  return { type: actionTypes.AUTH_LOGOUT }
 }

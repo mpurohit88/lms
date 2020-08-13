@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { Input, H1, PrimaryButton, SecondayButton, Loader } from '../../components';
 
@@ -16,9 +17,13 @@ const Login = ({ setIsAuthenticated }) => {
   const dispatch = useDispatch();
 
   const loading = useSelector(state => state.authState.loading);
+  const isAuthenticated = useSelector(state => state.authState.loading);
 
   return (
     <div className="login">
+
+      {isAuthenticated && <Redirect to="/course" />}
+
       {loading && <Loader />}
 
       <H1 text="Please Login" />

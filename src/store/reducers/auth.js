@@ -19,6 +19,8 @@ function auth(state = initialState, action) {
     case actionType.AUTH_SAVE_FAILURE:
       return { ...state, loading: false };
 
+    case actionType.AUTH_LOGOUT:
+      return { ...state, token: null, userId: null }
     default:
       return state;
   }

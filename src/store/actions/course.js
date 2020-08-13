@@ -6,7 +6,7 @@ export const saveCourse = (newCourse) => {
   return dispatch => {
     dispatch(saveCourseStart())
     try {
-      axios.post('https://react-hook-lms.firebaseio.com/course', { course: newCourse })
+      axios.post('https://react-hook-lms.firebaseio.com/course.json', { course: newCourse })
         .then((response) => {
           console.log("response..", response);
           dispatch(saveCoursSuccess(newCourse))

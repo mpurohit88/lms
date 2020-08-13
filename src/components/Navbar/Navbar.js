@@ -1,12 +1,17 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 
 import { Navbar, Nav, Form, FormControl } from '../BootstrapWrap';
 import OutlineButton from '../Button/OutlineButton';
 
+import { logout } from '../../store/actions/auth';
+
 import './navbar.css';
 
-const NavbarWrap = ({ setIsAuthenticated }) => {
+const NavbarWrap = ({ isAuthenticated }) => {
+  const dispatch = useDispatch();
+
   return <>
     <Navbar bg="primary" variant="dark">
       <Navbar.Brand href="#home">Navbar</Navbar.Brand>
@@ -24,7 +29,12 @@ const NavbarWrap = ({ setIsAuthenticated }) => {
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
         <OutlineButton variant="outline-light" text="Search" />
       </Form>
-      <Nav.Link href="/" style={{ "color": "white" }} onClick={() => setIsAuthenticated(false)}>Logout</Nav.Link>
+      {isAuthenticated ?
+        <Nav.Link href="/" style={{ "color": "white" }} onClick={() => dispatch(logout())}>Logout</Nav.Link>
+        :
+        <Nav.Link href="/" style={{ "color": "white" }} >Login</Nav.Link>
+
+      }
     </Navbar>
   </>
 }
