@@ -6,6 +6,7 @@ import SecondayButton from './Button/SecondayButton';
 import ModalWrap from './Modal/Modal';
 import DropdownWrap from './Dropdown/Dropdown';
 import TableWrap from './Table/Table';
+import Loader from './Loader/Loader';
 
 export {
   Input,
@@ -15,5 +16,6 @@ export {
   SecondayButton,
   ModalWrap,
   DropdownWrap,
-  TableWrap
+  TableWrap,
+  Loader
 }

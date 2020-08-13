@@ -8,13 +8,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { course, student } from './store/reducers/index'
+import { course, student, auth } from './store/reducers/index'
 
 import { BrowserRouter } from 'react-router-dom';
 
 const rootReducers = combineReducers({
   courseState: course,
-  studentState: student
+  studentState: student,
+  authState: auth
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -4,21 +4,26 @@ import axios from 'axios';
 export const auth = (credentials, isSignUp) => {
   console.log("'credentials...", credentials)
 
-  let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=[API-KEY]';
+  let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD_UDk91UmB0jfFxbXwGqUruGFTL6x4qbs';
 
   if (isSignUp) {
-    url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API-KEY]';
+    url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD_UDk91UmB0jfFxbXwGqUruGFTL6x4qbs';
   } else {
-    credentials = { ...credentials, token: 'secret1.secret2.secret3.secret4', returnSecureToken: true }
+    credentials = { ...credentials, returnSecureToken: true }
   }
 
   return dispatch => {
     dispatch(authStart());
     axios.post(url,
       credentials).then(response => {
-        console.log("auth response", response);
-      }).then(error => {
+        localStorage.setItem('token', response.data.idToken);
+        localStorage.setItem('userId', response.data.localId);
+        localStorage.setItem('expirationDate', new Date(new Date().getTime() + response.data.expiresIn * 1000));
+
+        dispatch(authSuccess(response.data));
+      }).catch(error => {
         console.log("auth error", error);
+        dispatch(authFailure(error));
       })
   }
 }
@@ -27,10 +32,10 @@ export const authStart = () => {
   return { type: actionTypes.AUTH_SAVE_START }
 }
 
-export const authSuccess = () => {
-  return { type: actionTypes.AUTH_SAVE_SUCCESS }
+export const authSuccess = (authData) => {
+  return { type: actionTypes.AUTH_SAVE_SUCCESS, value: authData }
 }
 
-export const authFailure = () => {
-  return { type: actionTypes.AUTH_SAVE_FAILURE }
+export const authFailure = (error) => {
+  return { type: actionTypes.AUTH_SAVE_FAILURE, value: error }
 }

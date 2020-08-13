@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Input, H1, PrimaryButton, SecondayButton } from '../../components';
+import { Input, H1, PrimaryButton, SecondayButton, Loader } from '../../components';
 
 import { auth } from '../../store/actions/auth';
 
@@ -15,9 +15,12 @@ const Login = ({ setIsAuthenticated }) => {
 
   const dispatch = useDispatch();
 
+  const loading = useSelector(state => state.authState.loading);
 
   return (
     <div className="login">
+      {loading && <Loader />}
+
       <H1 text="Please Login" />
       <Input text="User Name" value={userName} autoFocus={true} onChange={(e) => setUserName(e.target.value)} />
       <Input text="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
