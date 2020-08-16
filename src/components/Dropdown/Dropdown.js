@@ -22,8 +22,8 @@ const DropdownWrap = ({ name, title, options, setSelectedValue, onChange, value 
       id="input-group-dropdown-1"
     >
       {
-        (options || []).map(option => {
-          return <Dropdown.Item name={name} href="#" onClick={(e) => handleClick(e)} id={option.id}> {option.name}</Dropdown.Item>
+        (options || []).map((option, index) => {
+          return <Dropdown.Item key={index} name={name} href="#" onClick={(e) => handleClick(e)} id={option.id}> {option.name}</Dropdown.Item>
         })
       }
     </DropdownButton>

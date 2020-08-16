@@ -14,7 +14,7 @@ function auth(state = initialState, action) {
       return { ...state, loading: true };
 
     case actionType.AUTH_SAVE_SUCCESS:
-      return { ...state, loading: false, token: action.value.idToken, userId: action.value.localId };
+      return { ...state, loading: false, isAuthenticated: true, token: action.value.idToken, userId: action.value.localId };
 
     case actionType.AUTH_SAVE_FAILURE:
       return { ...state, loading: false };

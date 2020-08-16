@@ -1,36 +1,33 @@
 import * as actionType from '../actions/types';
 
 const initialState = {
-  course: [{
-    id: 1,
-    courseName: "Course Name",
-    category: 1,
-    subCategory: 2,
-    fees: 1000
-  },
-  {
-    id: 2,
-    courseName: "Second Name",
-    category: 2,
-    subCategory: 1,
-    fees: 1200
-  }
-  ]
+  course: [],
+  loading: false,
+  error: null
 };
 
 function course(state = initialState, action) {
   switch (action.type) {
     case actionType.COURSE_SAVE_START:
-      return { course: [...state.course], loading: true, error: null };
+      return { ...state, course: [...state.course], loading: true, error: null };
 
     case actionType.COURSE_SAVE_SUCCESS:
-      const newCourseArray = [...state.course];
+      const newCourseArray = [...state.list];
       newCourseArray.push(action.value);
 
-      return { course: newCourseArray, loading: false, error: null };
+      return { ...state, list: newCourseArray, loading: false, error: null };
 
     case actionType.COURSE_SAVE_FAILURE:
-      return { course: [...state.course], loading: false, error: action.value };
+      return { ...state, course: [...state.course], loading: false, error: action.value };
+
+    case actionType.COURSE_LIST_START:
+      return { ...state, loading: true, error: null };
+
+    case actionType.COURSE_LIST_SUCCESS:
+      return { ...state, loading: false, error: null, list: action.value };
+
+    case actionType.COURSE_LIST_FAILURE:
+      return { ...state, loading: false, error: action.value };
 
     default:
       return state;

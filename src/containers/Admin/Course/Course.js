@@ -5,6 +5,7 @@ import axios from 'axios';
 import { PrimaryButton, ModalWrap, Input } from '../../../components';
 import { saveCourse } from '../../../store/actions/course';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
+// import withRequiredAuthNew from '../../../hoc/withRequireAuthNew/withRequiredAuthNew';
 
 import List from './List'
 import Create from './Create';

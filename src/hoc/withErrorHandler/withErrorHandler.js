@@ -21,8 +21,8 @@ const withErrorHandler = (WrappedComponent, axios) => {
       });
 
       return () => {
-        axios.interceptors.eject(reqInterc);
-        axios.interceptors.eject(resInterc);
+        axios.interceptors.request.eject(reqInterc);
+        axios.interceptors.response.eject(resInterc);
       }
     }, []);
 
@@ -40,7 +40,3 @@ const withErrorHandler = (WrappedComponent, axios) => {
 }
 
 export default withErrorHandler;
-
-const NewWrappedComponent = (props) => {
-  return <div />
-}

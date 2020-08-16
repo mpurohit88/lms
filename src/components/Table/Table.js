@@ -9,8 +9,8 @@ const TableWrap = ({ tableHeads, tableRows, onClick }) => {
     <thead>
       <tr>
         {
-          (tableHeads || []).map(tableHead => {
-            return <th>{tableHead}</th>
+          (tableHeads || []).map((tableHead, index) => {
+            return <th key={index}>{tableHead}</th>
           })
         }
       </tr>
@@ -18,8 +18,8 @@ const TableWrap = ({ tableHeads, tableRows, onClick }) => {
     <tbody>
       {
         (tableRows || []).map(tableRow => {
-          return <tr>
-            <td>{tableRow.id}</td>
+          return <tr key={tableRow.key}>
+            <td>{tableRow.key}</td>
             <td>{tableRow.courseName}</td>
             <td>{tableRow.category}</td>
             <td>{tableRow.subCategory}</td>

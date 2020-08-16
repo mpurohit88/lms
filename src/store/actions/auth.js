@@ -5,10 +5,10 @@ import * as actionTypes from './types';
 export const auth = (credentials, isSignUp) => {
   console.log("'credentials...", credentials)
 
-  let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD_UDk91UmB0jfFxbXwGqUruGFTL6x4qbs';
+  let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyADTpp88iidzAumi5k5O-nET99FhQeUbTk';
 
   if (isSignUp) {
-    url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD_UDk91UmB0jfFxbXwGqUruGFTL6x4qbs';
+    url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyADTpp88iidzAumi5k5O-nET99FhQeUbTk';
   } else {
     credentials = { ...credentials, returnSecureToken: true }
   }

@@ -14,7 +14,7 @@ const NavbarWrap = ({ isAuthenticated }) => {
 
   return <>
     <Navbar bg="primary" variant="dark">
-      <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+      <Navbar.Brand href="#home">LMS</Navbar.Brand>
       <Nav className="mr-auto" id="Navbar">
         {/* <Nav.Link href="#home" onClick={() => setCurrentPage(1)}>Home</Nav.Link>
         <Nav.Link href="#course" onClick={() => setCurrentPage(2)}>Courses</Nav.Link>
