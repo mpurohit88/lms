@@ -41,50 +41,46 @@ export const saveCourse = (newCourse) => {
   }
 }
 
-export const fetchCourseState = () => {
-  return {
-    type: actionType.COURSE_LIST_START
-  }
+//{type: '', payload: ''}
+
+export const fetchCourseStart = () => {
+  return { type: actionType.COURSE_FETCH_START }
 }
 
 export const fetchCourseSuccess = (listOfCourses) => {
-  return {
-    type: actionType.COURSE_LIST_SUCCESS,
-    value: listOfCourses
-  }
+  return { type: actionType.COURSE_FETCH_SUCCESS, value: listOfCourses }
 }
 
-export const fetchCourseFailure = (error) => {
-  return {
-    type: actionType.COURSE_LIST_FAILURE,
-    value: error
-  }
+export const fetchCourseFailure = () => {
+  return { type: actionType.COURSE_SAVE_FAILURE }
 }
 
-export const getCourses = (newCourse) => {
+export const fetchCourses = () => {
   return dispatch => {
-    dispatch(fetchCourseState())
-    try {
-      axios.get('https://react-hook-lms.firebaseio.com/course.json?auth=' + localStorage.getItem('token'))
-        .then((response) => {
-          console.log("response..", response);
+    dispatch(fetchCourseStart());
 
-          let courseList = [];
+    axios.get(`http://localhost:3002/course.json`)
+      .then(response => {
 
-          for (let key in response.data) {
-            courseList.push({ key: key, ...response.data[key].course })
-          }
+        let courseList = [];
+        const courseResult = response.data;
 
-          dispatch(fetchCourseSuccess(courseList))
+        Object.keys(courseResult).map(key => {
+          console.log("kesy...", key);
+          courseList.push({ key: key, ...courseResult[key].course });
         })
-        .catch(error => {
-          console.log("error..", error);
-          dispatch(fetchCourseFailure(error))
-        })
-    } catch (error) {
-      dispatch(fetchCourseFailure(error))
-    }
+
+        dispatch(fetchCourseSuccess(courseList));
+      })
+      .catch(error => {
+        dispatch(fetchCourseFailure());
+      });
+
+    // API CALL
+
+    // SUCCESS
+
+    // FAILURE
+
   }
 }
-
-// axios.post('https://react-hook-lms.firebaseio.com/course.json', { course: newCourse });

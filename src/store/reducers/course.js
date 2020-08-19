@@ -20,14 +20,14 @@ function course(state = initialState, action) {
     case actionType.COURSE_SAVE_FAILURE:
       return { ...state, course: [...state.course], loading: false, error: action.value };
 
-    case actionType.COURSE_LIST_START:
-      return { ...state, loading: true, error: null };
+    case actionType.COURSE_FETCH_START:
+      return { ...state };
 
-    case actionType.COURSE_LIST_SUCCESS:
-      return { ...state, loading: false, error: null, list: action.value };
+    case actionType.COURSE_FETCH_SUCCESS:
+      return { ...state, course: action.value };
 
-    case actionType.COURSE_LIST_FAILURE:
-      return { ...state, loading: false, error: action.value };
+    case actionType.COURSE_FETCH_FAILURE:
+      return { ...state };
 
     default:
       return state;
