@@ -2,6 +2,8 @@ import axios from 'axios';
 
 import * as actionType from './types';
 
+const url = 'https://react-hook-lms.firebaseio.com';
+
 export const saveCourseStart = () => {
   return {
     type: actionType.COURSE_SAVE_START
@@ -26,7 +28,7 @@ export const saveCourse = (newCourse) => {
   return dispatch => {
     dispatch(saveCourseStart())
     try {
-      axios.post('https://react-hook-lms.firebaseio.com/course.json?auth=' + localStorage.getItem('token'), { course: newCourse })
+      axios.post(url + '/course.json?auth=' + localStorage.getItem('token'), { course: newCourse })
         .then((response) => {
           console.log("response..", response);
           dispatch(saveCoursSuccess(newCourse))
@@ -40,8 +42,6 @@ export const saveCourse = (newCourse) => {
     }
   }
 }
-
-//{type: '', payload: ''}
 
 export const fetchCourseStart = () => {
   return { type: actionType.COURSE_FETCH_START }
@@ -59,7 +59,7 @@ export const fetchCourses = () => {
   return dispatch => {
     dispatch(fetchCourseStart());
 
-    axios.get(`http://localhost:3002/course.json`)
+    axios.get(`${url}/course.json`)
       .then(response => {
 
         let courseList = [];
@@ -73,14 +73,7 @@ export const fetchCourses = () => {
         dispatch(fetchCourseSuccess(courseList));
       })
       .catch(error => {
-        dispatch(fetchCourseFailure());
+        dispatch(fetchCourseFailure(error));
       });
-
-    // API CALL
-
-    // SUCCESS
-
-    // FAILURE
-
   }
 }
