@@ -18,12 +18,12 @@ const TableWrap = ({ tableHeads, tableRows, onClick }) => {
     <tbody>
       {
         (tableRows || []).map(tableRow => {
-          return <tr key={tableRow.key}>
+          return <tr key={tableRow.id}>
             <td>{tableRow.key}</td>
-            <td>{tableRow.courseName}</td>
-            <td>{tableRow.category}</td>
-            <td>{tableRow.subCategory}</td>
-            <td>{tableRow.fees}</td>
+            <td>{tableRow.name}</td>
+            <td>{tableRow.category_id}</td>
+            <td>{tableRow.subCategory_id}</td>
+            <td>{tableRow.price}</td>
             <td><PrimaryButton id={tableRow.id} text="Edit" onClick={() => onClick(tableRow)} /></td>
           </tr>
         })

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import * as actionType from './types';
 
-const url = 'https://react-hook-lms.firebaseio.com';
+const url = 'http://localhost:3002';
 
 export const saveCourseStart = () => {
   return {
@@ -65,12 +65,13 @@ export const fetchCourses = () => {
         let courseList = [];
         const courseResult = response.data;
 
-        Object.keys(courseResult).map(key => {
-          console.log("kesy...", key);
-          courseList.push({ key: key, ...courseResult[key].course });
-        })
 
-        dispatch(fetchCourseSuccess(courseList));
+        // Object.keys(courseResult).map(key => {
+        //   console.log("kesy...", key);
+        //   courseList.push({ key: key, ...courseResult[key].course });
+        // })
+
+        dispatch(fetchCourseSuccess(courseResult));
       })
       .catch(error => {
         dispatch(fetchCourseFailure(error));
